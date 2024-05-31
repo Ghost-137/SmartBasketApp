@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "182197014160",
+    "project_id": "smart-basket-test",
+    "storage_bucket": "smart-basket-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182197014160:android:de27539830993757ec1215",
+        "android_client_info": {
+          "package_name": "com.example.smart_basket_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALBv4DOrLIO46AGqS9WjrtVyNjWbEaOzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
