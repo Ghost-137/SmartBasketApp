@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_basket_app/consts/colors.dart';
@@ -24,7 +23,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool? isCheck = false;
-  var controller = Get.put(AuthController());
+  final AuthController controller = AuthController();
 
   //text controller
   var nameController = TextEditingController();
@@ -126,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       if (isCheck != false) {
                         try {
                           await controller
-                              .signoutMethod(
+                              .signUpMethodMine(
                                   context: context,
                                   email: emailController.text,
                                   password: passwordController.text)

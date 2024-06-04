@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 const appname = "SmartBasket";
 const appversion = "Version 1.0.0";
 const credits = "@Shahriar Alam hridoy";
