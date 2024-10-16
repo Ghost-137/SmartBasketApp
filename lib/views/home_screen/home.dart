@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_basket_app/consts/colors.dart';
@@ -10,6 +9,8 @@ import 'package:smart_basket_app/views/cart_screen/cart_screen.dart';
 import 'package:smart_basket_app/views/category_screen/category_screen.dart';
 import 'package:smart_basket_app/views/home_screen/home_screen.dart';
 import 'package:smart_basket_app/views/profile_screen/profile_screen.dart';
+
+// This Page Contains Bottom Navigation Bar.
 
 class Home extends StatelessWidget {
   const Home({super.key});

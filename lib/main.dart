@@ -1,18 +1,22 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:smart_basket_app/consts/colors.dart';
 import 'package:smart_basket_app/consts/strings.dart';
 import 'package:smart_basket_app/consts/styles.dart';
-import 'package:smart_basket_app/firebase_options.dart';
+import 'package:smart_basket_app/controllers/home_controllers.dart';
+import 'package:smart_basket_app/views/cart_screen/cart_controller.dart';
 import 'package:smart_basket_app/views/splash_screen/splash_screen.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
-  runApp(const MyApp());
+  await Firebase.initializeApp();
+  print(
+      'Firebase initialized successfully'); // Add this log to check initialization
+  Get.put(CartController());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

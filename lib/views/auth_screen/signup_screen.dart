@@ -23,7 +23,7 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool? isCheck = false;
-  final AuthController controller = AuthController();
+  final AuthController controller = AuthController();     // Auth Controller Initialize
 
   //text controller
   var nameController = TextEditingController();
@@ -140,7 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           ).then(
                             (value) {
                               VxToast.show(context, msg: loggedin);
-                              Get.offAll(() => const Home());
+                              Get.offAll(() => const Home()); // After Signup button clicked Auto Homepage will appear
                             },
                           );
                         } catch (e) {

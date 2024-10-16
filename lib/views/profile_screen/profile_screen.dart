@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               //edit profile button
-              Align(
+              const Align(
                 alignment: Alignment.topRight,
                 child: Icon(
                   Icons.edit,

@@ -1,4 +1,3 @@
-
 import 'package:smart_basket_app/consts/images.dart';
 import 'package:smart_basket_app/consts/strings.dart';
 
@@ -13,13 +12,13 @@ const featuredTitles2 = [boysGlasses, mobliePhone, tShirts];
 
 const categoriesList = [
   womenClothing,
-  menClothingFashion,
   compAccess,
   automobile,
   kidToys,
   sports,
-  jewelery,
   cellPhone,
+  jewelery,
+  menClothingFashion,
   furniture
 ];
 const categoriesImages = [

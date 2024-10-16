@@ -1,18 +1,44 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:smart_basket_app/consts/consts.dart';
 import 'package:smart_basket_app/views/category_screen/iteam_details.dart';
 import 'package:smart_basket_app/widgets_common/bg_widget.dart';
 
-class CategoryDetails extends StatelessWidget {
+class CategoryDetails extends StatefulWidget {
   final String? title;
   const CategoryDetails({super.key, required this.title});
+
+  @override
+  State<CategoryDetails> createState() => _CategoryDetailsState();
+}
+
+class _CategoryDetailsState extends State<CategoryDetails> {
+  List _products = [];
+  var _fireStoreInstance = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchProducts();
+  }
+
+  fetchProducts() async {
+    try {
+      QuerySnapshot qn = await _fireStoreInstance.collection("products").get();
+      setState(() {
+        _products = qn.docs.map((doc) => doc.data()).toList();
+      });
+    } catch (e) {
+      print("Failed to fetch products: $e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(
-        title: title!.text.fontFamily(bold).white.make(),
+        title: widget.title!.text.fontFamily(bold).white.make(),
       ),
       body: Container(
         padding: const EdgeInsets.all(12),
@@ -23,6 +49,7 @@ class CategoryDetails extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: List.generate(
+                  // This is few cards named Baby Clothing above product list
                   6,
                   (index) => "Baby Clothing"
                       .text
@@ -46,7 +73,8 @@ class CategoryDetails extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 6,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisExtent: 250,
                       mainAxisSpacing: 8,
@@ -56,21 +84,21 @@ class CategoryDetails extends StatelessWidget {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            imgP5,
+                          Image.network(
+                            _products[index]["product-images"],
                             width: 200,
                             height: 150,
                             fit: BoxFit.cover,
                           ),
                           const Spacer(),
                           10.heightBox,
-                          "Ladies Vhanity bag-Ping"
+                          "\$${_products[index]["product-name"]}"
                               .text
                               .fontFamily(semibold)
                               .color(darkFontGrey)
                               .make(),
                           10.heightBox,
-                          "\$50"
+                          "${_products[index]["product-price"]}"
                               .text
                               .color(redColor)
                               .fontFamily(bold)
@@ -86,7 +114,7 @@ class CategoryDetails extends StatelessWidget {
                           .padding(const EdgeInsets.all(12))
                           .make()
                           .onTap(() {
-                        Get.to(() => const IteamDetails(title: "Dummy iteam"));
+                        Get.to(IteamDetails(_products[index]));
                       });
                     }))
           ],
